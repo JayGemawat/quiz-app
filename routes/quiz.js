@@ -47,11 +47,13 @@ router.post("/submit", async (req, res) => {
   }
 
   res.render("result", {
-    score,
-    total: questions.length,
-    questions,
-    userAnswers
-  });
+  title: "Your Score",
+  score,
+  total: questions.length,
+  questions,
+  userAnswers
+});
+
 });
 
 
