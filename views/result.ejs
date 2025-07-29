@@ -1,0 +1,36 @@
+<%- include('partials/header') %>
+
+<div class="container mt-5">
+  <div class="text-center">
+    <h1 class="display-5">🎯 Quiz Report</h1>
+    <p class="lead">Your Score: <strong><%= score %> / <%= total %></strong></p>
+    <a href="/" class="btn btn-primary mb-4">Take Another Quiz</a>
+  </div>
+
+  <% questions.forEach((q, i) => { 
+    const userAnswer = userAnswers[`q${i}`];
+    const correct = q.correct_answer;
+    const isCorrect = userAnswer === correct;
+  %>
+    <div class="card mb-3 border-<%= isCorrect ? 'success' : 'danger' %>">
+      <div class="card-header bg-light">
+        <strong>Q<%= i + 1 %>:</strong> <%- q.question %>
+      </div>
+      <div class="card-body">
+        <p><strong>Your Answer:</strong> 
+          <span class="<%= isCorrect ? 'text-success' : 'text-danger' %>">
+            <%- userAnswer || 'Not Attempted' %>
+          </span>
+        </p>
+        <p><strong>Correct Answer:</strong> <span class="text-success"><%- correct %></span></p>
+        <% if (isCorrect) { %>
+          <p class="text-success fw-bold">✅ Correct</p>
+        <% } else { %>
+          <p class="text-danger fw-bold">❌ Incorrect</p>
+        <% } %>
+      </div>
+    </div>
+  <% }); %>
+</div>
+
+<%- include('partials/footer') %>

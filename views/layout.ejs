@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title><%= title || "Quiz App" %></title>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
+
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="/styles.css">
+
+  <!-- Bootstrap JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Security Scripts -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      // Disable right-click
+      document.addEventListener('contextmenu', event => event.preventDefault());
+
+      // Disable copy
+      document.addEventListener('copy', event => event.preventDefault());
+
+      // Attempt to block PrintScreen (very limited effectiveness)
+      document.addEventListener('keydown', e => {
+        if (e.key === 'PrintScreen') {
+          alert('Screenshot is disabled!');
+          e.preventDefault();
+        }
+      });
+
+      // Block clipboard API (extra layer)
+      navigator.clipboard && navigator.clipboard.writeText("Copying is disabled.");
+    });
+  </script>
+</head>
+<body class="container py-4">
+  <%- body %>
+</body>
+</html>
