@@ -2,6 +2,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const path = require("path");
 const ejsLayouts = require("express-ejs-layouts");
+require("dotenv").config(); // ✅ Ensure environment variables are loaded
 
 const app = express();
 
@@ -11,8 +12,9 @@ app.use(express.static(path.join(__dirname, "public")));
 
 // View Engine
 app.set("view engine", "ejs");
+app.set("views", path.join(__dirname, "views")); // ✅ Explicitly set views dir
 app.use(ejsLayouts);
-app.set("layout", "layout"); // Default layout (views/layout.ejs)
+app.set("layout", "layout"); // Uses views/layout.ejs
 
 // Routes
 const quizRouter = require("./routes/quiz");
