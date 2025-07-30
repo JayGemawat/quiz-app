@@ -59,7 +59,7 @@
   <div id="blockedOverlay">⚠️ Quiz blocked due to suspicious screen activity. Refresh to continue.</div>
 
   <div class="container">
-    <div id="timer">15:00</div>
+    <div id="timer">30:00</div>
     <h2 class="mb-4">Welcome, <%= username %>!</h2>
     <h4 class="mb-4">Answer the following questions:</h4>
 
@@ -102,7 +102,7 @@
       localStorage.removeItem("quizTime");
 
       const timerElement = document.getElementById("timer");
-      let totalSeconds = 15 * 60;
+      let totalSeconds = 30 * 60;
 
       const timerInterval = setInterval(() => {
         const minutes = Math.floor(totalSeconds / 60);
